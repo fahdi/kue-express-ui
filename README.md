@@ -10,5 +10,5 @@ An example using kue with kue-ui within an express app
  - Run `yarn` in the cloned directory
  - Run `yarn start`
  
-You should have default que interface at http://localhost:3500/kue
-and kue-ui at http://localhost:3500/kue-ui
+You should have default que interface at http://localhost:3500/api/
+and kue-ui at http://localhost:3500/kue
