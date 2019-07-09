@@ -13,12 +13,18 @@ const conf = convict({
     format: 'port',
     default: 3000,
     env: 'PORT'
-  }
+  },
+  redis: {
+    doc: 'The redis connection string.',
+    format: '*',
+    default: 'redis://localhost:6379',
+    env: 'REDIS'
+  },
 });
 
 // Load environment dependent configuration
 const env = conf.get('env');
-conf.loadFile(`./config/${env}.json`);
+conf.loadFile(`${__dirname}/${env}.json`);
 
 // Perform validation
 conf.validate({allowed: 'strict'});

@@ -24,8 +24,6 @@ class UI {
         this.app.use('/api', kue.app);
         this.app.use('/kue', kueUI.app);
 
-        console.log("reaches here");
-
         return new Promise(resolve => {
             this.app.listen(this.port, () => {
                 debug('app listening at port %s', this.port);

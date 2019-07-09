@@ -1,3 +1,4 @@
 { 
-  port: 3500
+  port: 3500,
+  redis: 'redis://localhost:6379'
 }
