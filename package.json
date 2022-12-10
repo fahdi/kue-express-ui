@@ -13,7 +13,7 @@
   "dependencies": {
     "convict": "^5.0.0",
     "debug": "^4.1.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "kue": "^0.11.6",
     "kue-ui": "^0.1.0"
   },
