@@ -1,4 +1,5 @@
 'use strict';
+
 const kue = require('kue');
 const kueUI = require('kue-ui');
 const express = require('express');
@@ -10,24 +11,31 @@ class UI {
         this.app = null;
     }
 
-    start() {
-        if (this.app) return Promise.resolve();
-
-        this.app = express();
-
+    setupKueUI() {
         kueUI.setup({
             apiURL: '/api',
             baseURL: '/kue',
             updateInterval: 5000
         });
+    }
 
+    configureRoutes() {
         this.app.use('/api', kue.app);
         this.app.use('/kue', kueUI.app);
+    }
 
-        return new Promise(resolve => {
+    start() {
+        if (this.app) return Promise.resolve();
+
+        this.app = express();
+        this.setupKueUI();
+        this.configureRoutes();
+
+        return new Promise((resolve, reject) => {
             this.app.listen(this.port, () => {
-                debug('app listening at port %s', this.port);
-            });
+                debug('App listening at port %s', this.port);
+                resolve();
+            }).on('error', reject);
         });
     }
 }
