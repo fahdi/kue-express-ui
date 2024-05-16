@@ -37,4 +37,3 @@ An example using kue with kue-ui within an express app.
 
 ## License
 MIT
-```
